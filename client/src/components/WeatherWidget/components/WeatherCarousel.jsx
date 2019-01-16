@@ -2,8 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 //  Slides
-import Slide1 from "./SlideForecast"
-import Slide2 from "./SlideMetrics"
+import SlideForecast from "./SlideForecast"
+import SlideMetrics from "./SlideMetrics"
 //  const Slides = [Slide1]
 
 //  Styled Components
@@ -22,17 +22,17 @@ const Slide = styled.div`
   height: 120px;
 `
 
-const WeatherCarousel = props => {
+const WeatherCarousel = ({ weather }) => {
   return (
     <Container>
       <Hr />
       <div id="carouselControls" className="carousel slide" data-ride="carousel">
         <div className="carousel-inner">
           <Slide className="carousel-item active">
-            <Slide1 />
+            <SlideMetrics weather={weather} />
           </Slide>
           <Slide className="carousel-item">
-            <Slide2 />
+            <SlideForecast />
           </Slide>
         </div>
         <a

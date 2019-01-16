@@ -11,6 +11,8 @@ const Container = styled.div`
 
 const HiLow = styled.div`
   font-weight: 200;
+  font-size: 20px;
+  letter-spacing: 2px;
 `
 
 const RealFeel = styled.div`
@@ -39,34 +41,38 @@ const CurlyBrace = styled.div`
 
 const Metrics = styled.div`
   text-align: center;
+  font-weight: 200;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 `
 
-const CurrentMetrics = props => {
+const WeatherOverview = ({ weather }) => {
   return (
     <Container>
-      <HiLow>H25° / L20°</HiLow>
+      <HiLow>
+        H{Math.round(weather.daily.data[0].temperatureHigh)}° / L
+        {Math.round(weather.daily.data[0].temperatureLow)}°
+      </HiLow>
 
       <RealFeel>
-        <Temp>&nbsp;25°</Temp>
-        <Description>SUNNY</Description>
+        <Temp>&nbsp;{Math.round(weather.currently.apparentTemperature)}°</Temp>
+        <Description>{weather.currently.summary}</Description>
       </RealFeel>
 
       <CurlyBrace>{/* &#123; */}</CurlyBrace>
 
       <Metrics>
         <div>
-          24° <br />
+          {Math.round(weather.currently.temperature)}° <br />
           Temperature
         </div>
         <div>
-          78% <br />
+          {weather.currently.humidity * 100}% <br />
           Humidity
         </div>
         <div>
-          31km/h <br />
+          {weather.currently.windSpeed}km/h <br />
           Windspeed
         </div>
       </Metrics>
@@ -74,4 +80,4 @@ const CurrentMetrics = props => {
   )
 }
 
-export default CurrentMetrics
+export default WeatherOverview
