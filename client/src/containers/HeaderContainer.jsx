@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import { setWeather } from "../actions/rootActions"
 
 //  services
-import { darkSky, locationIQ } from "../services/http"
+import http from "../services/http"
 
 const HeaderContainer = WrappedComponent => {
   class Wrapper extends Component {
@@ -25,17 +25,30 @@ const HeaderContainer = WrappedComponent => {
       this.setState({ location: input.value })
     }
 
-    search = async () => {
-      const { data } = await locationIQ.request({
-        params: { q: this.state.location }
+    handleKeyPress = e => {
+      if (e.which === 13) {
+        this.searchLocation()
+      }
+    }
+
+    searchLocation = async () => {
+      let { location } = this.state
+      let locationPrepped = location.trim().toLowerCase()
+
+      if (locationPrepped.length < 2) {
+        return
+      }
+      const { data } = await http.get("/location", {
+        params: { q: locationPrepped }
       })
+
       const output = data.map(el => {
         const nameArray = el.display_name.split(",")
         const name =
           nameArray.length >= 3
             ? `${nameArray[0]}, ${nameArray[1]}, ${nameArray[nameArray.length - 1]}`
             : el.display_name
-        return { name: name, location: { lat: el.lat, lon: el.lon } }
+        return { name, location: { lat: el.lat, lon: el.lon } }
       })
       this.setState({ searchOptions: output })
     }
@@ -47,17 +60,22 @@ const HeaderContainer = WrappedComponent => {
 
       const currentLocation = name.split(",")[0]
 
-      const { data } = await darkSky.get(`/${location.lat},${location.lon}`)
+      const { data } = await http.get(`/weather`, {
+        params: { location: name, ...location }
+      })
+
       this.props.setWeather(currentLocation, data)
+      console.log(data)
     }
 
     render() {
       return (
         <WrappedComponent
           {...this.state}
-          search={this.search}
+          search={this.searchLocation}
           getWeather={this.getWeather}
           toggleSearchBar={this.toggleSearchBar}
+          handleKeyPress={this.handleKeyPress}
           handleSearchChange={this.handleSearchChange}
         />
       )

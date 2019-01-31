@@ -123,9 +123,21 @@ const SearchOptions = styled.div`
   font-size: 13px;
   font-weight: 300;
 
+  & hr {
+    width: 25%;
+    margin: auto;
+    /* margin-left: 25%; */
+    border: none;
+    height: 1px;
+    background: lightgrey;
+  }
+
   & div {
+    cursor: pointer;
     margin: 5px;
     padding: 10px;
+
+    border-radius: 2px;
 
     &:hover {
       background: lightsalmon;
@@ -137,6 +149,7 @@ const Header = ({
   toggleSearchBar,
   showSearchBar,
   location,
+  handleKeyPress,
   handleSearchChange,
   search,
   getWeather,
@@ -162,12 +175,16 @@ const Header = ({
               placeholder="Location"
               value={location}
               onChange={handleSearchChange}
+              onKeyPress={handleKeyPress}
             />
             <SearchOptions show={searchOptions.length > 0}>
               {searchOptions.map((el, i) => (
-                <div onClick={getWeather} data-index={i} key={i}>
-                  {el.name}
-                </div>
+                <React.Fragment key={i}>
+                  {i === 0 ? null : <hr />}
+                  <div onClick={getWeather} data-index={i} key={i}>
+                    {el.name}
+                  </div>
+                </React.Fragment>
               ))}
             </SearchOptions>
           </div>

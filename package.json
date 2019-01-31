@@ -1,0 +1,31 @@
+{
+  "name": "wear-ther",
+  "version": "1.0.0",
+  "description": "An app to help you choose what to wear based on the weather",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev-backend": "nodemon app.js",
+    "dev-client": "cd ./client && npm start",
+    "dev": "concurrently \"npm run dev-client\" \"npm run dev-backend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaansaeed/wear-ther.git"
+  },
+  "author": "Amaan Saeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amaansaeed/wear-ther/issues"
+  },
+  "homepage": "https://github.com/amaansaeed/wear-ther#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "morgan": "^1.9.1"
+  }
+}

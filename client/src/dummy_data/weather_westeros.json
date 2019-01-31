@@ -1,0 +1,57 @@
+{
+  "latitude": 20.210671,
+  "longitude": -87.462947,
+  "timezone": "America/Cancun",
+  "currently": {
+    "time": 1548915726,
+    "summary": "Long Winter",
+    "icon": "clear-night",
+    "apparentTemperature": -46.57
+  },
+  "daily": {
+    "data": [
+      {
+        "time": 1548910800,
+        "summary": "Snow with a chance of White Walkers.",
+        "icon": "snow",
+        "sunriseTime": 1548937629,
+        "sunsetTime": 1548978113,
+        "precipIntensity": 0.93,
+        "precipIntensityMax": 0.1575,
+        "precipIntensityMaxTime": 1548961200,
+        "precipProbability": 0.72,
+        "precipType": "snow",
+        "temperatureHigh": -26.74,
+        "temperatureLow": -52.69,
+        "humidity": 0.77,
+        "windSpeed": 20.69,
+        "windGust": 74.24,
+        "windGustTime": 1548979200,
+        "windBearing": 86,
+        "cloudCover": 0.87,
+        "uvIndex": 2
+      },
+      {
+        "time": 1548910800,
+        "summary": "More Snow.",
+        "icon": "snow",
+        "sunriseTime": 1548967629,
+        "sunsetTime": 1548978113,
+        "precipIntensity": 0.98,
+        "precipIntensityMax": 0.2075,
+        "precipIntensityMaxTime": 1548961200,
+        "precipProbability": 0.92,
+        "precipType": "snow",
+        "temperatureHigh": -28.74,
+        "temperatureLow": -46.69,
+        "humidity": 0.68,
+        "windSpeed": 33.69,
+        "windGust": 71.24,
+        "windGustTime": 1548979200,
+        "windBearing": 86,
+        "cloudCover": 0.9,
+        "uvIndex": 2
+      }
+    ]
+  }
+}
