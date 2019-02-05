@@ -126,7 +126,7 @@ const Day = styled.div`
   }
 
   &:hover {
-    background: lightseagreen;
+    background: rgba(24, 154, 205, 0.3);
   }
 `
 

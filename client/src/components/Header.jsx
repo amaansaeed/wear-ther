@@ -6,7 +6,7 @@ import HeaderContainer from "../containers/HeaderContainer"
 
 //  styled-components
 const Wrapper = styled.div`
-  height: ${props => (props.show ? "180px" : "100px")};
+  height: ${props => (props.show ? "140px" : "60px")};
   transition: 0.5s all;
   position: relative;
   margin-bottom: 30px;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const TopBar = styled.div`
   width: 100vw;
-  height: 100px;
+  height: 60px;
   padding: 0 30px;
 
   position: absolute;
@@ -39,7 +39,7 @@ const TopBar = styled.div`
 const Title = styled.div`
   text-align: center;
   color: white;
-  font-size: 2em;
+  font-size: 25px;
   padding: 0 20px;
 `
 
@@ -51,13 +51,12 @@ const Search = styled.div`
 const Button = styled.button`
   cursor: pointer;
   color: white;
-  font-size: 1em;
-  width: 200px;
-  height: 50px;
-  letter-spacing: 2px;
+  font-size: 16px;
+  width: 150px;
+  height: 40px;
   background: none;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 4px;
 `
 
 const BottomBar = styled.div`
@@ -140,7 +139,7 @@ const SearchOptions = styled.div`
     border-radius: 2px;
 
     &:hover {
-      background: lightsalmon;
+      background: rgba(24, 154, 205, 0.3);
     }
   }
 `
@@ -158,7 +157,7 @@ const Header = ({
   return (
     <Wrapper show={showSearchBar}>
       <TopBar>
-        <Title>WearTher!</Title>
+        <Title>Wear-ther</Title>
 
         <div />
 
