@@ -1,16 +1,24 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 // containers
-import Container from "../containers/WeatherContainer"
+import Container from "../containers/WeatherContainer";
 
 //  funtions
-import { getTime } from "../services/date"
+import { getTime } from "../services/date";
 
 //  icons
-import weatherIcons from "../components/WeatherIcons"
+import weatherIcons from "../components/WeatherIcons";
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
 
 //  styled components
 const Wrapper = styled.div`
@@ -26,19 +34,19 @@ const Wrapper = styled.div`
 
   display: grid;
   grid-template-rows: max-content auto max-content;
-`
+`;
 
 const TitleGrid = styled.div`
   padding: 0 10px;
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: auto max-content;
-`
+`;
 
 const Title = styled.div`
   font-size: 25px;
   font-weight: 600;
-`
+`;
 
 const Icon = styled.div`
   text-align: right;
@@ -47,7 +55,7 @@ const Icon = styled.div`
     width: 80px;
     height: 80px;
   }
-`
+`;
 
 const Hr = styled.hr`
   height: 1px;
@@ -56,7 +64,7 @@ const Hr = styled.hr`
   width: 80%;
   margin-left: 0px;
   margin-top: 10px;
-`
+`;
 
 const HiLow = styled.div`
   font-weight: 200;
@@ -68,7 +76,7 @@ const HiLow = styled.div`
     padding-left: 10px;
     letter-spacing: 0px;
   }
-`
+`;
 
 const Description = styled.div`
   text-align: center;
@@ -76,7 +84,7 @@ const Description = styled.div`
   font-weight: 200;
   letter-spacing: 2px;
   margin: 50px 20px;
-`
+`;
 
 const MetricsGrid = styled.div`
   padding: 0px 15px;
@@ -86,18 +94,26 @@ const MetricsGrid = styled.div`
   grid-column-gap: 35px;
 
   font-size: 13px;
-`
+`;
 const HrLeft = styled.hr`
   width: 80%;
   margin-left: 0;
   margin-top: 0;
-`
+
+  border: none;
+  height: 1px;
+  background: lightslategray;
+`;
 
 const HrRight = styled.hr`
   width: 80%;
   margin-top: 0;
   margin-right: 0;
-`
+
+  border: none;
+  height: 1px;
+  background: lightslategray;
+`;
 
 const Metric = styled.div`
   /* font-size: 12px; */
@@ -110,20 +126,20 @@ const Metric = styled.div`
   & > div:nth-child(1) {
     text-transform: capitalize;
   }
-`
+`;
 
 const MetricTitle = styled.div`
   font-weight: 400px;
-`
+`;
 
 const MetricTitleRight = styled(MetricTitle)`
   text-align: right;
-`
+`;
 
-const Content = styled.div``
+const Content = styled.div``;
 
 const WeatherWidget = ({ selected, weather }) => {
-  const forecast = !weather ? null : weather.daily.data[selected]
+  const forecast = !weather ? null : weather.daily.data[selected];
   return (
     <Wrapper>
       <TitleGrid>
@@ -135,14 +151,25 @@ const WeatherWidget = ({ selected, weather }) => {
             : days[new Date(forecast.time * 1000).getDay()]}
           <Hr />
           <HiLow>
-            Hi<span>{!forecast ? null : Math.round(forecast.temperatureHigh)}</span>° | Low
-            <span>{!forecast ? null : Math.round(forecast.temperatureLow)}</span>°
+            Hi
+            <span>
+              {!forecast ? null : Math.round(forecast.temperatureHigh)}
+            </span>
+            ° | Low
+            <span>
+              {!forecast ? null : Math.round(forecast.temperatureLow)}
+            </span>
+            °
           </HiLow>
         </Title>
 
         <Icon>
           <img
-            src={!forecast ? weatherIcons["clear-day"] : weatherIcons[forecast.icon]}
+            src={
+              !forecast
+                ? weatherIcons["clear-day"]
+                : weatherIcons[forecast.icon]
+            }
             alt="weather-icon"
           />
         </Icon>
@@ -185,11 +212,15 @@ const WeatherWidget = ({ selected, weather }) => {
             <HrLeft />
             <Metric>
               <div>Humidity:</div>
-              <div>{!weather ? null : Math.round(forecast.humidity * 100)}%</div>
+              <div>
+                {!weather ? null : Math.round(forecast.humidity * 100)}%
+              </div>
             </Metric>
             <Metric>
               <div>Cloud cover:</div>
-              <div>{!weather ? null : Math.round(forecast.cloudCover * 100)}%</div>
+              <div>
+                {!weather ? null : Math.round(forecast.cloudCover * 100)}%
+              </div>
             </Metric>
             <Metric>
               <div>UV Index:</div>
@@ -202,17 +233,22 @@ const WeatherWidget = ({ selected, weather }) => {
             <HrRight />
             <Metric>
               <div>{!weather ? null : forecast.precipType}:</div>
-              <div>{!weather ? null : Math.round(forecast.precipProbability * 100)}%</div>
+              <div>
+                {!weather ? null : Math.round(forecast.precipProbability * 100)}
+                %
+              </div>
             </Metric>
             <Metric>
               <div>Time:</div>
-              <div>{!weather ? null : getTime(forecast.precipIntensityMaxTime)}</div>
+              <div>
+                {!weather ? null : getTime(forecast.precipIntensityMaxTime)}
+              </div>
             </Metric>
           </div>
         </MetricsGrid>
       </Content>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Container(WeatherWidget)
+export default Container(WeatherWidget);
