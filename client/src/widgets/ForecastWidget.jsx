@@ -75,7 +75,7 @@ const Description = styled.div`
   font-size: 20px;
   font-weight: 300;
   letter-spacing: 8px;
-  margin-top: -10px;
+  /* margin-top: -10px; */
 `
 
 const CurrentWeather = styled.div`

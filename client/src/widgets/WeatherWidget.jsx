@@ -102,7 +102,7 @@ const HrLeft = styled.hr`
 
   border: none;
   height: 1px;
-  background: lightslategray;
+  background: lightgrey;
 `;
 
 const HrRight = styled.hr`
@@ -112,7 +112,7 @@ const HrRight = styled.hr`
 
   border: none;
   height: 1px;
-  background: lightslategray;
+  background: lightgrey;
 `;
 
 const Metric = styled.div`
