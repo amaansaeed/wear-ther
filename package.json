@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev-backend": "nodemon app.js",
-    "dev-client": "cd ./client && npm start",
-    "dev": "concurrently \"npm run dev-client\" \"npm run dev-backend\""
+    "server": "nodemon app.js",
+    "client": "cd ./client && npm start",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
