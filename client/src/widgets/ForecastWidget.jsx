@@ -130,7 +130,13 @@ const Day = styled.div`
   }
 `
 
-const HiLo = styled.div`
+const Centered = styled.div`
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+`
+
+const HiLo = styled(Centered)`
   display: grid;
   grid-template-columns: 50px max-content 50px;
   text-align: center;
@@ -173,9 +179,11 @@ const ForecastWidget = ({ currentLocation, weather, handleClick }) => {
           : weather.daily.data.map((day, i) => (
               <Day key={i} data-day={i} onClick={handleClick}>
                 <div>
+                  <Centered>
                   {i === 0 ? "Today" : null}
                   {i === 1 ? "Tomorrow" : null}
                   {i > 1 ? days[new Date(day.time * 1000).getDay()] : null}
+                  </Centered>
                 </div>
                 {/* <div>{day.time}</div> */}
                 <div>
