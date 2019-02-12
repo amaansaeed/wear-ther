@@ -30,7 +30,7 @@ app.use(helmet()) //  third-party middleware
 app.use(cors())
 
 //  API Routing
-app.use('/api/v1', routes)
+app.use('/api/v1/wearther', routes)
 
 // Serve the static files from the React app
 app.use(
